@@ -1,8 +1,3 @@
-using Entitas.CodeGeneration.Attributes;
-using Entitas.CodeGeneration.Components.Extensions;
-using Entitas.CodeGeneration.Contexts.Data;
-using Entitas.CodeGeneration.Events.Extensions;
-
 namespace Entitas.CodeGeneration.Components.Data;
 
 public readonly struct EventData : IEquatable<EventData>
@@ -42,4 +37,16 @@ public readonly struct EventData : IEquatable<EventData>
     
     public static bool operator ==(EventData left, EventData right) => left.Equals(right);
     public static bool operator !=(EventData left, EventData right) => !left.Equals(right);
+}
+
+public enum EventTarget
+{
+    Any,
+    Self
+}
+
+public enum EventType
+{
+    Added,
+    Removed
 }

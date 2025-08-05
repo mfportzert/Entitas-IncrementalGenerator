@@ -1,4 +1,3 @@
-using Entitas.CodeGeneration.Attributes;
 using Entitas.CodeGeneration.Components.Data;
 using Entitas.CodeGeneration.Components.Extensions;
 

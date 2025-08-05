@@ -1,5 +1,4 @@
 using System.Collections.Immutable;
-using Entitas.CodeGeneration.Attributes;
 using Entitas.CodeGeneration.Components.Extensions;
 using Entitas.CodeGeneration.Components.Helpers;
 using Entitas.CodeGeneration.Contexts.Data;
@@ -25,7 +24,7 @@ public readonly struct ComponentData : IEquatable<ComponentData>
     public CleanupMode CleanupMode { get; }
 
     public ImmutableArray<MemberData> Members { get; }
-    public bool ShouldGenerateEntityComponentSources { get; }
+    public bool IsGenerated { get; }
 
     public bool HasEvents => Events != null && Events.Length > 0;
     
@@ -53,7 +52,7 @@ public readonly struct ComponentData : IEquatable<ComponentData>
         CleanupMode = cleanupMode;
         
         Members = ComponentMembersHelper.GetComponentMembers(type);
-        ShouldGenerateEntityComponentSources = true;
+        IsGenerated = false;
     }
     
     public ComponentData(
@@ -66,7 +65,7 @@ public readonly struct ComponentData : IEquatable<ComponentData>
         bool isUnique = false,
         bool hasCleanupAttribute = false,
         CleanupMode cleanupMode = CleanupMode.DestroyEntity,
-        bool shouldGenerateEntityComponentSources = false)
+        bool isGenerated = true)
     {
         ShortTypeName = shortTypeName;
         FullTypeName = fullTypeName;
@@ -83,7 +82,7 @@ public readonly struct ComponentData : IEquatable<ComponentData>
         
         Members = members;
         
-        ShouldGenerateEntityComponentSources = shouldGenerateEntityComponentSources;
+        IsGenerated = isGenerated;
     }
 
     public string GetComponentName() => GetComponentName(ComponentGenerationHelper.IgnoreNamespaces);
@@ -106,7 +105,7 @@ public readonly struct ComponentData : IEquatable<ComponentData>
                HasCleanupAttribute == other.HasCleanupAttribute &&
                CleanupMode == other.CleanupMode &&
                Members.SequenceEqual(other.Members) &&
-               ShouldGenerateEntityComponentSources == other.ShouldGenerateEntityComponentSources;
+               IsGenerated == other.IsGenerated;
     }
 
     public override bool Equals(object? obj) =>
@@ -126,11 +125,17 @@ public readonly struct ComponentData : IEquatable<ComponentData>
             hash = hash * 31 + HasCleanupAttribute.GetHashCode();
             hash = hash * 31 + CleanupMode.GetHashCode();
             hash = hash * 31 + Members.GetSequenceHashCode();
-            hash = hash * 31 + ShouldGenerateEntityComponentSources.GetHashCode();
+            hash = hash * 31 + IsGenerated.GetHashCode();
             return hash;
         }        
     }
     
     public static bool operator ==(ComponentData left, ComponentData right) => left.Equals(right);
     public static bool operator !=(ComponentData left, ComponentData right) => !left.Equals(right);
+}
+
+public enum CleanupMode
+{
+    RemoveComponent,
+    DestroyEntity
 }

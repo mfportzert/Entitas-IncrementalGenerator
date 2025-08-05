@@ -1,6 +1,5 @@
 using System.Collections.Immutable;
 using System.Text;
-using Entitas.CodeGeneration.Attributes;
 using Entitas.CodeGeneration.Components.Data;
 using Entitas.CodeGeneration.Contexts.Data;
 using Entitas.CodeGeneration.EntityIndex.Extensions;
@@ -15,8 +14,8 @@ public static class EntityIndexGenerationHelper
     public const string PrimaryEntityIndexTypeName = "Entitas.PrimaryEntityIndex";
     public const string EntityIndexTypeName = "Entitas.EntityIndex";
 
-    const string? EntityIndexAttributeName = nameof(EntityIndexAttribute);
-    const string? PrimaryEntityIndexAttributeName = nameof(PrimaryEntityIndexAttribute);
+    const string? EntityIndexAttributeName = "EntityIndexAttribute";
+    const string? PrimaryEntityIndexAttributeName = "PrimaryEntityIndexAttribute";
 
     public static bool TryFindEntityIndexType(ISymbol symbol, out EntityIndexType entityIndexType)
     {

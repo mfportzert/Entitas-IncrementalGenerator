@@ -1,4 +1,3 @@
-using Entitas.CodeGeneration.Attributes;
 using Entitas.CodeGeneration.Components.Data;
 
 namespace Entitas.CodeGeneration.EntityIndex.Extensions;

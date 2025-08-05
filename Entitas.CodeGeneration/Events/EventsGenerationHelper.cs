@@ -1,6 +1,5 @@
 using System.Collections.Immutable;
 using System.Text;
-using Entitas.CodeGeneration.Attributes;
 using Entitas.CodeGeneration.Components.Data;
 using Entitas.CodeGeneration.Components.Extensions;
 using Entitas.CodeGeneration.Contexts.Data;

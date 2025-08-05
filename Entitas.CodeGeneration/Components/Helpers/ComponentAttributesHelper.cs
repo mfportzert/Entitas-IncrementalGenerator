@@ -1,5 +1,4 @@
 using System.Collections.Immutable;
-using Entitas.CodeGeneration.Attributes;
 using Entitas.CodeGeneration.Components.Data;
 using Entitas.CodeGeneration.Contexts;
 using Microsoft.CodeAnalysis;
@@ -8,10 +7,10 @@ namespace Entitas.CodeGeneration.Components.Helpers;
 
 public static class ComponentAttributesHelper
 {
-    readonly static string? EventAttributeTypeName = typeof(EventAttribute).FullName;
-    readonly static string? UniqueAttributeTypeName = typeof(UniqueAttribute).FullName;
-    readonly static string? FlagPrefixAttributeTypeName = typeof(FlagPrefixAttribute).FullName;
-    readonly static string? CleanupAttributeTypeName = typeof(CleanupAttribute).FullName;
+    readonly static string? EventAttributeTypeName = "Entitas.CodeGeneration.Attributes.EventAttribute";
+    readonly static string? UniqueAttributeTypeName = "Entitas.CodeGeneration.Attributes.UniqueAttribute";
+    readonly static string? FlagPrefixAttributeTypeName = "Entitas.CodeGeneration.Attributes.FlagPrefixAttribute";
+    readonly static string? CleanupAttributeTypeName = "Entitas.CodeGeneration.Attributes.CleanupAttribute";
 
     public static void ParseComponentAttributes(INamedTypeSymbol type, 
         out ImmutableArray<string> contextNames,

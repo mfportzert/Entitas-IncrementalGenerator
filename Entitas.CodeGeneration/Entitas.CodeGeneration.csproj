@@ -9,12 +9,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <LangVersion>Latest</LangVersion>
-        <RootNamespace>EntitasGenerator</RootNamespace>
     </PropertyGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\Entitas.CodeGeneration.Attributes\Entitas.CodeGeneration.Attributes.csproj" />
-    </ItemGroup>
 
     <ItemGroup>
         <!-- Unity 6 supports up to CodeAnalysis 4.3 - https://docs.unity3d.com/6000.1/Documentation/Manual/create-source-generator.html -->

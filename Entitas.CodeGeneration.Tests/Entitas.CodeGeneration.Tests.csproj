@@ -17,6 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\Entitas.CodeGeneration.Attributes\Entitas.CodeGeneration.Attributes.csproj" />
         <ProjectReference Include="..\Entitas.CodeGeneration\Entitas.CodeGeneration.csproj" />
         <Reference Include="Entitas">
             <HintPath>References/Entitas.dll</HintPath>

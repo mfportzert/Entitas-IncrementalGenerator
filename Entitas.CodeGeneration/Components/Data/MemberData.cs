@@ -1,4 +1,3 @@
-using Entitas.CodeGeneration.Attributes;
 using Entitas.CodeGeneration.EntityIndex;
 using Entitas.CodeGeneration.Extensions;
 using Microsoft.CodeAnalysis;
@@ -60,4 +59,10 @@ public readonly struct MemberData : IEquatable<MemberData>
     
     public static bool operator ==(MemberData left, MemberData right) => left.Equals(right);
     public static bool operator !=(MemberData left, MemberData right) => !left.Equals(right);
+}
+
+public enum EntityIndexType
+{
+    EntityIndex,
+    PrimaryEntityIndex
 }

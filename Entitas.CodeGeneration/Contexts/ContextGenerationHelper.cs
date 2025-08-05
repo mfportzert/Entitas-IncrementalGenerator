@@ -1,6 +1,5 @@
 using System.Collections.Immutable;
 using System.Text;
-using Entitas.CodeGeneration.Attributes;
 using Entitas.CodeGeneration.Components;
 using Entitas.CodeGeneration.Contexts.Data;
 using Microsoft.CodeAnalysis;
@@ -13,8 +12,8 @@ public static class ContextGenerationHelper
 {
     public const string DefaultContextName = "Game";
     
-    public readonly static string? ContextAttributeName = nameof(ContextAttribute);
-    public readonly static string? ContextAttributeTypeName = typeof(ContextAttribute).FullName;
+    public readonly static string? ContextAttributeName = "ContextAttribute";
+    public readonly static string? ContextAttributeTypeName = "Entitas.CodeGeneration.Attributes.ContextAttribute";
 
     const string AttributeName = "Attribute";
     
