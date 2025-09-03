@@ -423,7 +423,7 @@ public partial class GameEntity
     public GameNamespaceAnyTestEvent3ListenerComponent gameNamespaceAnyTestEvent3Listener { get { return (GameNamespaceAnyTestEvent3ListenerComponent)GetComponent(GameComponentsLookup.GameNamespaceAnyTestEvent3Listener); } }
     public bool hasGameNamespaceAnyTestEvent3Listener { get { return HasComponent(GameComponentsLookup.GameNamespaceAnyTestEvent3Listener); } }
 
-    public void AddGameNamespaceAnyTestEvent3Listener(System.Collections.Generic.List<INamespaceAnyTestEvent3Listener> newValue)
+    public void AddGameNamespaceAnyTestEvent3Listener(System.Collections.Generic.List<IGameNamespaceAnyTestEvent3Listener> newValue)
     {
         var index = GameComponentsLookup.GameNamespaceAnyTestEvent3Listener;
         var component = (GameNamespaceAnyTestEvent3ListenerComponent)CreateComponent(index, typeof(GameNamespaceAnyTestEvent3ListenerComponent));
@@ -431,7 +431,7 @@ public partial class GameEntity
         AddComponent(index, component);
     }
 
-    public void ReplaceGameNamespaceAnyTestEvent3Listener(System.Collections.Generic.List<INamespaceAnyTestEvent3Listener> newValue)
+    public void ReplaceGameNamespaceAnyTestEvent3Listener(System.Collections.Generic.List<IGameNamespaceAnyTestEvent3Listener> newValue)
     {
         var index = GameComponentsLookup.GameNamespaceAnyTestEvent3Listener;
         var component = (GameNamespaceAnyTestEvent3ListenerComponent)CreateComponent(index, typeof(GameNamespaceAnyTestEvent3ListenerComponent));
@@ -500,7 +500,7 @@ public partial class GameEntity
     public GameNamespaceAnyTestEvent3RemovedListenerComponent gameNamespaceAnyTestEvent3RemovedListener { get { return (GameNamespaceAnyTestEvent3RemovedListenerComponent)GetComponent(GameComponentsLookup.GameNamespaceAnyTestEvent3RemovedListener); } }
     public bool hasGameNamespaceAnyTestEvent3RemovedListener { get { return HasComponent(GameComponentsLookup.GameNamespaceAnyTestEvent3RemovedListener); } }
 
-    public void AddGameNamespaceAnyTestEvent3RemovedListener(System.Collections.Generic.List<INamespaceAnyTestEvent3RemovedListener> newValue)
+    public void AddGameNamespaceAnyTestEvent3RemovedListener(System.Collections.Generic.List<IGameNamespaceAnyTestEvent3RemovedListener> newValue)
     {
         var index = GameComponentsLookup.GameNamespaceAnyTestEvent3RemovedListener;
         var component = (GameNamespaceAnyTestEvent3RemovedListenerComponent)CreateComponent(index, typeof(GameNamespaceAnyTestEvent3RemovedListenerComponent));
@@ -508,7 +508,7 @@ public partial class GameEntity
         AddComponent(index, component);
     }
 
-    public void ReplaceGameNamespaceAnyTestEvent3RemovedListener(System.Collections.Generic.List<INamespaceAnyTestEvent3RemovedListener> newValue)
+    public void ReplaceGameNamespaceAnyTestEvent3RemovedListener(System.Collections.Generic.List<IGameNamespaceAnyTestEvent3RemovedListener> newValue)
     {
         var index = GameComponentsLookup.GameNamespaceAnyTestEvent3RemovedListener;
         var component = (GameNamespaceAnyTestEvent3RemovedListenerComponent)CreateComponent(index, typeof(GameNamespaceAnyTestEvent3RemovedListenerComponent));
@@ -1313,7 +1313,7 @@ public partial class InputEntity
     public InputNamespaceAnyTestEvent3ListenerComponent inputNamespaceAnyTestEvent3Listener { get { return (InputNamespaceAnyTestEvent3ListenerComponent)GetComponent(InputComponentsLookup.InputNamespaceAnyTestEvent3Listener); } }
     public bool hasInputNamespaceAnyTestEvent3Listener { get { return HasComponent(InputComponentsLookup.InputNamespaceAnyTestEvent3Listener); } }
 
-    public void AddInputNamespaceAnyTestEvent3Listener(System.Collections.Generic.List<INamespaceAnyTestEvent3Listener> newValue)
+    public void AddInputNamespaceAnyTestEvent3Listener(System.Collections.Generic.List<IInputNamespaceAnyTestEvent3Listener> newValue)
     {
         var index = InputComponentsLookup.InputNamespaceAnyTestEvent3Listener;
         var component = (InputNamespaceAnyTestEvent3ListenerComponent)CreateComponent(index, typeof(InputNamespaceAnyTestEvent3ListenerComponent));
@@ -1321,7 +1321,7 @@ public partial class InputEntity
         AddComponent(index, component);
     }
 
-    public void ReplaceInputNamespaceAnyTestEvent3Listener(System.Collections.Generic.List<INamespaceAnyTestEvent3Listener> newValue)
+    public void ReplaceInputNamespaceAnyTestEvent3Listener(System.Collections.Generic.List<IInputNamespaceAnyTestEvent3Listener> newValue)
     {
         var index = InputComponentsLookup.InputNamespaceAnyTestEvent3Listener;
         var component = (InputNamespaceAnyTestEvent3ListenerComponent)CreateComponent(index, typeof(InputNamespaceAnyTestEvent3ListenerComponent));
@@ -1390,7 +1390,7 @@ public partial class InputEntity
     public InputNamespaceAnyTestEvent3RemovedListenerComponent inputNamespaceAnyTestEvent3RemovedListener { get { return (InputNamespaceAnyTestEvent3RemovedListenerComponent)GetComponent(InputComponentsLookup.InputNamespaceAnyTestEvent3RemovedListener); } }
     public bool hasInputNamespaceAnyTestEvent3RemovedListener { get { return HasComponent(InputComponentsLookup.InputNamespaceAnyTestEvent3RemovedListener); } }
 
-    public void AddInputNamespaceAnyTestEvent3RemovedListener(System.Collections.Generic.List<INamespaceAnyTestEvent3RemovedListener> newValue)
+    public void AddInputNamespaceAnyTestEvent3RemovedListener(System.Collections.Generic.List<IInputNamespaceAnyTestEvent3RemovedListener> newValue)
     {
         var index = InputComponentsLookup.InputNamespaceAnyTestEvent3RemovedListener;
         var component = (InputNamespaceAnyTestEvent3RemovedListenerComponent)CreateComponent(index, typeof(InputNamespaceAnyTestEvent3RemovedListenerComponent));
@@ -1398,7 +1398,7 @@ public partial class InputEntity
         AddComponent(index, component);
     }
 
-    public void ReplaceInputNamespaceAnyTestEvent3RemovedListener(System.Collections.Generic.List<INamespaceAnyTestEvent3RemovedListener> newValue)
+    public void ReplaceInputNamespaceAnyTestEvent3RemovedListener(System.Collections.Generic.List<IInputNamespaceAnyTestEvent3RemovedListener> newValue)
     {
         var index = InputComponentsLookup.InputNamespaceAnyTestEvent3RemovedListener;
         var component = (InputNamespaceAnyTestEvent3RemovedListenerComponent)CreateComponent(index, typeof(InputNamespaceAnyTestEvent3RemovedListenerComponent));

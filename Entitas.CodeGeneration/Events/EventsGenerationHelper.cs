@@ -27,13 +27,12 @@ public static class EventsGenerationHelper
             {
                 var optionalContextName = componentData.ContextNames.Length > 1 ? contextName : string.Empty;
                 var eventTypeSuffix = eventData.GetEventTypeSuffix();
-                var listenerComponentName = componentData.EventComponentName(eventData) + eventTypeSuffix.AddListenerSuffix();
+                var listenerComponentName = optionalContextName + componentData.EventComponentName(eventData) + eventTypeSuffix.AddListenerSuffix();
                 var listenerComponentTypeName = listenerComponentName.AddComponentSuffix();
-                var listenerComponentFullTypeName = optionalContextName + listenerComponentTypeName;
     
                 var eventComponentData = new ComponentData(
                     shortTypeName: listenerComponentTypeName,
-                    fullTypeName: listenerComponentFullTypeName,
+                    fullTypeName: listenerComponentTypeName, // same as short (not in a namespace)
                     contextNames: ImmutableArray.Create(contextName),
                     members: ImmutableArray.Create(
                         new MemberData($"System.Collections.Generic.List<I{listenerComponentName}>", "value")
