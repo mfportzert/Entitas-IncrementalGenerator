@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entitas.CodeGeneration", "Entitas.CodeGeneration\Entitas.CodeGeneration.csproj", "{DF51A8B8-6199-44E5-847F-25FA4A3F2486}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entitas.CodeGeneration.Attributes", "Entitas.CodeGeneration.Attributes\Entitas.CodeGeneration.Attributes.csproj", "{D9C8AE38-B431-48FD-9566-F800E6638866}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entitas.CodeGeneration.Tests", "Entitas.CodeGeneration.Tests\Entitas.CodeGeneration.Tests.csproj", "{F165F527-CDC1-4E38-80B5-8671D0E5F690}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF51A8B8-6199-44E5-847F-25FA4A3F2486}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF51A8B8-6199-44E5-847F-25FA4A3F2486}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF51A8B8-6199-44E5-847F-25FA4A3F2486}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF51A8B8-6199-44E5-847F-25FA4A3F2486}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9C8AE38-B431-48FD-9566-F800E6638866}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9C8AE38-B431-48FD-9566-F800E6638866}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9C8AE38-B431-48FD-9566-F800E6638866}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9C8AE38-B431-48FD-9566-F800E6638866}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F165F527-CDC1-4E38-80B5-8671D0E5F690}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F165F527-CDC1-4E38-80B5-8671D0E5F690}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F165F527-CDC1-4E38-80B5-8671D0E5F690}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F165F527-CDC1-4E38-80B5-8671D0E5F690}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
