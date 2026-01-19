@@ -25,7 +25,7 @@ public static class EntityIndexGenerationHelper
             {
                 case PrimaryEntityIndexAttributeName:
                     entityIndexType = EntityIndexType.PrimaryEntityIndex;
-                    break;
+                    return true;
 
                 case EntityIndexAttributeName:
                     entityIndexType = EntityIndexType.EntityIndex;
