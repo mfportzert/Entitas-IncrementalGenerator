@@ -22,7 +22,7 @@ Limitations:
 Setup:
 - Build the solution (typically in Release configuration)
 - Copy <b>Entitas.CodeGeneration.dll</b> and <b>Entitas.CodeGeneration.Attributes.dll</b> in your Unity project.
-  - Note: Entitas.CodeGeneration.dll must be in Assembly-CSharp.
+  - Note: Entitas.CodeGeneration.dll must be in the default assembly (Assembly-CSharp). If you're creating a new project, drop them anywhere you want.
 - To allow Entitas.CodeGeneration.dll to work in Unity, follow the documentation: https://docs.unity3d.com/6000.1/Documentation/Manual/create-source-generator.html
     - (In the inspector) Under <b>Select platforms for plugin</b>, disable <b>Any Platform</b>.
     - Under <b>Include Platforms</b>, disable <b>Editor</b> and <b>Standalone</b>.
