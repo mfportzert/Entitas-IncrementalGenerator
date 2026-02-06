@@ -87,6 +87,12 @@ public class TestMember99Component : IComponent
     }
     
     [Fact]
+    public Task GenerateMultipleEntityIndicesComponents()
+    {
+        return TestHelper.Verify(TestSources.MultipleEntityIndexTestSource, _output);
+    }
+    
+    [Fact]
     public Task GeneratePrimaryEntityIndexComponents()
     {
         return TestHelper.Verify(TestSources.PrimaryEntityIndexTestSource, _output);

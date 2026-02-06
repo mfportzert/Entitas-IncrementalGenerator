@@ -196,6 +196,28 @@ public class TestMemberComponent : IComponent
 }
 ";
     
+    public const string MultipleEntityIndexTestSource = @"
+using Entitas;
+using Entitas.CodeGeneration.Attributes;
+
+public sealed class GameAttribute : Entitas.CodeGeneration.Attributes.ContextAttribute
+{
+    public GameAttribute() : base(""Game"") {}
+}
+
+public class TestMember1Component : IComponent
+{
+    [EntityIndex]
+    public string Value;
+}
+
+public class TestMember2Component : IComponent
+{
+    [EntityIndex]
+    public string Value;
+}
+";
+    
     public const string PrimaryEntityIndexTestSource = @"
 using Entitas;
 using Entitas.CodeGeneration.Attributes;

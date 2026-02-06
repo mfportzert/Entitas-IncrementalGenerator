@@ -59,6 +59,8 @@ public static class EntityIndexGenerationHelper
         var indexConstantsBuilder = new StringBuilder();
         var addIndicesBuilder = new StringBuilder();
         var getIndicesBuilder = new StringBuilder();
+
+        var isEntityIndexFound = false;
         
         foreach (var componentData in componentsData)
         {
@@ -66,16 +68,17 @@ public static class EntityIndexGenerationHelper
             if (entityIndexCount == 0)
                 continue;
             
+            isEntityIndexFound = true;
             var hasMultipleIndices = entityIndexCount > 1;
 
             foreach (var memberData in componentData.Members)
             {
                 if (!memberData.IsEntityIndex)
                     continue;
-            
-                var indexName = hasMultipleIndices ?
-                    componentData.FullComponentName + memberData.Name.ToUpperFirst() :
-                    componentData.FullComponentName ;
+                
+                var indexName = hasMultipleIndices
+                    ? componentData.FullComponentName + memberData.Name.ToUpperFirst() 
+                    : componentData.FullComponentName;
 
                 indexConstantsBuilder.AppendLine(
                     EntityIndexTemplates.IndexConstantTemplate
@@ -91,15 +94,18 @@ public static class EntityIndexGenerationHelper
                     EntityIndexType.EntityIndex => EntityIndexTemplates.GetIndexSource(indexName, contextData, memberData),
                     _ => string.Empty,
                 };
-                getIndicesBuilder.Append(getIndexSource+"\n\n");
+                getIndicesBuilder.Append(getIndexSource + "\n\n");
             }
-
-            var source = EntityIndexTemplates.EntityIndexContextsTemplate
-                    .Replace("${indexConstants}", indexConstantsBuilder.ToString().RemoveLast("\n"))
-                    .Replace("${addIndices}", addIndicesBuilder.ToString().RemoveLast("\n\n"))
-                    .Replace("${getIndices}", getIndicesBuilder.ToString().RemoveLast("\n\n"));
-            
-            spc.AddSource(contextData.ContextName + "EntityIndices.g.cs", SourceText.From(source, Encoding.UTF8));
         }
+
+        if (!isEntityIndexFound)
+            return;
+        
+        var source = EntityIndexTemplates.EntityIndexContextsTemplate
+            .Replace("${indexConstants}", indexConstantsBuilder.ToString().RemoveLast("\n"))
+            .Replace("${addIndices}", addIndicesBuilder.ToString().RemoveLast("\n\n"))
+            .Replace("${getIndices}", getIndicesBuilder.ToString().RemoveLast("\n\n"));
+            
+        spc.AddSource(contextData.ContextName + "EntityIndices.g.cs", SourceText.From(source, Encoding.UTF8));
     }
 }
