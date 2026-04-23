@@ -13,10 +13,7 @@ public class Feature : Entitas.VisualDebugging.Unity.DebugSystems
 
     public Feature() : base(true)
     {
-        var typeName = DesperateDevs.Extensions.TypeExtension.ToCompilableString(GetType());
-        var shortType = DesperateDevs.Extensions.TypeExtension.ShortTypeName(typeName);
-        var readableType = DesperateDevs.Extensions.StringExtension.ToSpacedCamelCase(shortType);
-        initialize(readableType);
+        initialize(GetType().Name);
     }
 }
 
