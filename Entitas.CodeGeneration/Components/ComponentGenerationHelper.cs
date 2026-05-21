@@ -46,6 +46,8 @@ public static class ComponentGenerationHelper
             var builder = ImmutableArray.CreateBuilder<ComponentData>(originalComponents.Length);
             builder.AddRange(originalComponents);
 
+            var originalCount = builder.Count;
+            
             // Add generated components (ex: events)
             foreach (var component in originalComponents)
             {
@@ -53,7 +55,10 @@ public static class ComponentGenerationHelper
 
                 EventsGenerationHelper.CreateEventComponents(component, builder);
             }
-
+            
+            if (builder.Count == originalCount)
+                return originalComponents;
+            
             return builder.ToImmutable();
         });
     }

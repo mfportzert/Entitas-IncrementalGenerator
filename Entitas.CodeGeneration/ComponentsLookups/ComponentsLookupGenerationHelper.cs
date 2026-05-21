@@ -13,33 +13,32 @@ public static class ComponentsLookupGenerationHelper
     public static IncrementalValueProvider<ImmutableDictionary<string, ImmutableArray<ComponentData>>> 
         GetComponentsByContextNameLookup(IncrementalValueProvider<ImmutableArray<ComponentData>> componentsData)
     {
-        return componentsData
-            .Select((componentDataArray, _) =>
+        return componentsData.Select((componentDataArray, _) => 
+        {
+            var tempBuilders = new Dictionary<string, List<ComponentData>>(componentDataArray.Length);
+            
+            // we could order the components, but generated files are mostly invisible to devs, and we rarely check ComponentLookups
+            //var orderedComponents = componentDataArray.OrderBy(static c => c.GetComponentName());
+            
+            foreach (var component in componentDataArray)
             {
-                var tempBuilders = new Dictionary<string, ImmutableArray<ComponentData>.Builder>();
-                
-                // we could order the components, but generated files are mostly invisible to devs, and we rarely check ComponentLookups
-                //var orderedComponents = componentDataArray.OrderBy(static c => c.GetComponentName());
-                
-                foreach (var component in componentDataArray)
+                foreach (var ctx in component.ContextNames)
                 {
-                    foreach (var ctx in component.ContextNames)
+                    if (!tempBuilders.TryGetValue(ctx, out var list))
                     {
-                        if (!tempBuilders.TryGetValue(ctx, out var builder))
-                        {
-                            builder = ImmutableArray.CreateBuilder<ComponentData>();
-                            tempBuilders[ctx] = builder;
-                        }
-                        builder.Add(component);
+                        list = new List<ComponentData>();
+                        tempBuilders[ctx] = list;
                     }
+                    list.Add(component);
                 }
+            }
 
-                var finalBuilder = ImmutableDictionary.CreateBuilder<string, ImmutableArray<ComponentData>>();
-                foreach (var kvp in tempBuilders)
-                    finalBuilder[kvp.Key] = kvp.Value.ToImmutable();
+            var finalBuilder = ImmutableDictionary.CreateBuilder<string, ImmutableArray<ComponentData>>();
+            foreach (var kvp in tempBuilders)
+                finalBuilder[kvp.Key] = kvp.Value.ToImmutableArray();
 
-                return finalBuilder.ToImmutable();
-            });
+            return finalBuilder.ToImmutable();
+        });
     }
     
     public static void GenerateComponentsLookups(SourceProductionContext spc,
