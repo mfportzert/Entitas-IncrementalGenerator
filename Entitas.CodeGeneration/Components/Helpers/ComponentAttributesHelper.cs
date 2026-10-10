@@ -46,11 +46,13 @@ public static class ComponentAttributesHelper
             }
             if (TryGetEventData(attribute, attributeName, out var eventData))
             {
-                eventsDataBuilder.Add(eventData);
+                if (!eventsDataBuilder.Contains(eventData))
+                    eventsDataBuilder.Add(eventData);
             }
             else if (TryGetContextName(attribute, attrClass, attributeName, out var contextName))
             {
-                contextNamesBuilder.Add(contextName);
+                if (!contextNamesBuilder.Contains(contextName))
+                    contextNamesBuilder.Add(contextName);
             }
             else if (TryGetFlagPrefix(attribute, attributeName, out var flagPrefixOverride))
             {

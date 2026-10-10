@@ -107,4 +107,52 @@ public sealed class GameAttribute : Entitas.CodeGeneration.Attributes.ContextAtt
     }
 
     #endregion
+
+    #region Duplicates
+
+    [Fact]
+    public void PartialComponent_IsGeneratedOnce()
+    {
+        var source = "public partial class PosComponent : IComponent { public int x; } public partial class PosComponent { }";
+
+        var result = Run(source);
+
+        AssertHealthy(result);
+        Assert.Equal(1, result.HintNames.Count(n => n == "GamePosComponent.g.cs"));
+    }
+
+    [Fact]
+    public void PartialComponent_AmongOtherComponents_KeepsTheOthers()
+    {
+        // the parts of A are not next to each other, and C comes after the duplicate
+        var source = "public partial class AComponent : IComponent { public int x; } " +
+                     "public class BComponent : IComponent { public int x; } " +
+                     "public partial class AComponent { } " +
+                     "public class CComponent : IComponent { public int x; }";
+
+        var result = Run(source);
+
+        AssertHealthy(result);
+        Assert.Equal(1, result.HintNames.Count(n => n == "GameAComponent.g.cs"));
+        Assert.Equal(1, result.HintNames.Count(n => n == "GameBComponent.g.cs"));
+        Assert.Equal(1, result.HintNames.Count(n => n == "GameCComponent.g.cs"));
+    }
+
+    [Fact]
+    public void SameContextTwice_OnAComponent_IsGeneratedOnce()
+    {
+        var source = "[Game][Context(\"Game\")] public class PosComponent : IComponent { public int x; }";
+
+        AssertHealthy(Run(source));
+    }
+
+    [Fact]
+    public void SameEventTwice_OnAComponent_IsGeneratedOnce()
+    {
+        var source = "[Event(EventTarget.Self)][Event(EventTarget.Self)] public class PosComponent : IComponent { public int x; }";
+
+        AssertHealthy(Run(source));
+    }
+
+    #endregion
 }

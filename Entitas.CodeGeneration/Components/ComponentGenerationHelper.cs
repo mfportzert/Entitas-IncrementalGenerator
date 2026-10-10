@@ -43,6 +43,9 @@ public static class ComponentGenerationHelper
     {
         return declaredComponentsData.Select(static (originalComponents, _) => 
         {
+            // A partial class has one declaration per part: it must be generated once
+            originalComponents = RemoveDuplicates(originalComponents);
+            
             var builder = ImmutableArray.CreateBuilder<ComponentData>(originalComponents.Length);
             builder.AddRange(originalComponents);
 
@@ -61,6 +64,34 @@ public static class ComponentGenerationHelper
             
             return builder.ToImmutable();
         });
+    }
+    
+    static ImmutableArray<ComponentData> RemoveDuplicates(ImmutableArray<ComponentData> components)
+    {
+        var knownTypeNames = new HashSet<string>();
+        var hasDuplicates = false;
+        foreach (var component in components)
+        {
+            if (!knownTypeNames.Add(component.FullTypeName))
+            {
+                hasDuplicates = true;
+                break;
+            }
+        }
+
+        if (!hasDuplicates)
+            return components;
+
+        // Rare case (partial class): keep the first declaration of each component
+        knownTypeNames.Clear();
+        var builder = ImmutableArray.CreateBuilder<ComponentData>();
+        foreach (var component in components)
+        {
+            if (knownTypeNames.Add(component.FullTypeName))
+                builder.Add(component);
+        }
+
+        return builder.ToImmutable();
     }
     
     static bool IsComponentCandidateSyntax(SyntaxNode node)
