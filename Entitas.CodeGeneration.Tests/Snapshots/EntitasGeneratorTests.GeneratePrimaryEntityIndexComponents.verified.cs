@@ -108,6 +108,28 @@ public sealed partial class GameEntity : Entitas.Entity
 }
 
 
+// GameEntityIndices.g.cs
+public partial class Contexts
+{
+    public const string TestMember = "TestMember";
+
+    [Entitas.CodeGeneration.Attributes.PostConstructor]
+    public void InitializeEntityIndices()
+    {
+        game.AddEntityIndex(new Entitas.PrimaryEntityIndex<GameEntity, string>(
+            TestMember,
+            game.GetGroup(GameMatcher.TestMember),
+            (e, c) => ((TestMemberComponent)c).Value));
+    }
+}
+
+public static class ContextsExtensions
+{
+    public static GameEntity GetEntityWithTestMember(this GameContext context, string Value) {
+        return ((Entitas.PrimaryEntityIndex<GameEntity, string>)context.GetEntityIndex(Contexts.TestMember)).GetEntity(Value);
+    }
+}
+
 // GameEventSystems.g.cs
 public sealed class GameEventSystems : Feature
 {
