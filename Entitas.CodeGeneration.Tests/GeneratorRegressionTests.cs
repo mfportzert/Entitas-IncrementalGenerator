@@ -155,4 +155,20 @@ public sealed class GameAttribute : Entitas.CodeGeneration.Attributes.ContextAtt
     }
 
     #endregion
+
+    #region Event names
+
+    [Fact]
+    public void EventNames_WhenNamespaceContainsTheComponentName_PrefixOnlyTheComponentName()
+    {
+        var source = "namespace Camera { [Event(EventTarget.Any)] public class CameraComponent : IComponent { public int x; } }";
+
+        var result = Run(source);
+
+        AssertHealthy(result);
+        Assert.Contains("CameraAnyCameraListener", result.AllSources);
+        Assert.DoesNotContain("AnyCameraAnyCamera", result.AllSources);
+    }
+
+    #endregion
 }

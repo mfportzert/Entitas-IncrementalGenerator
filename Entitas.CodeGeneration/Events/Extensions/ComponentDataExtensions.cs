@@ -10,11 +10,11 @@ public static class ComponentDataExtensions
     {
         var componentName = componentData.GetComponentName();
         var shortComponentName = componentData.ShortComponentName;
-        var eventComponentName = componentName.Replace(
-            shortComponentName,
-            eventData.GetEventPrefix() + shortComponentName
-        );
-        return eventComponentName;
+        
+        // The full name is the namespace followed by the short name, and the namespace can contain the short name
+        // (ex: Camera.CameraComponent): only the end must be prefixed
+        var namespacePart = componentName.Substring(0, componentName.Length - shortComponentName.Length);
+        return namespacePart + eventData.GetEventPrefix() + shortComponentName;
     }
     
     // ex: (Context)AnyPosition3Removed
