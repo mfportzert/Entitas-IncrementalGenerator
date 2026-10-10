@@ -26,7 +26,7 @@ public readonly struct ComponentData : IEquatable<ComponentData>
     public ImmutableArray<MemberData> Members { get; }
     public bool IsGenerated { get; }
 
-    public bool HasEvents => Events != null && Events.Length > 0;
+    public bool HasEvents => Events.Length > 0;
     
     public ComponentData(INamedTypeSymbol type)
     {
@@ -73,14 +73,14 @@ public readonly struct ComponentData : IEquatable<ComponentData>
         ShortComponentName = ShortTypeName.RemoveComponentSuffix();
         FullComponentName = FullTypeName.RemoveDots().RemoveComponentSuffix();
         
-        ContextNames = contextNames;
-        Events = events;
+        ContextNames = contextNames.IsDefault ? ImmutableArray<string>.Empty : contextNames;
+        Events = events.IsDefault ? ImmutableArray<EventData>.Empty : events;
         FlagPrefix = flagPrefix;
         IsUnique = isUnique;
         HasCleanupAttribute = hasCleanupAttribute;
         CleanupMode = cleanupMode;
         
-        Members = members;
+        Members = members.IsDefault ? ImmutableArray<MemberData>.Empty : members;
         
         IsGenerated = isGenerated;
     }
