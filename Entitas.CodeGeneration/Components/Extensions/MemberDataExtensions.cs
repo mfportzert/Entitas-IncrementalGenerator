@@ -8,7 +8,7 @@ public static class MemberDataExtensions
 {
     public static string GetMethodParameters(this ImmutableArray<MemberData> memberData, bool newPrefix) 
         => string.Join(", ", memberData.Select(info 
-            => info.Type + (newPrefix ? $" new{info.Name.ToUpperFirst()}" : $" {info.Name.ToLowerFirst()}")));
+            => info.Type + (newPrefix ? $" new{info.Name.ToUpperFirst()}" : $" {info.Name.ToLowerFirst().AddPrefixIfIsKeyword()}")));
 
     public static string GetMethodArgs(this ImmutableArray<MemberData> memberData, bool newPrefix)
         => string.Join(", ", memberData.Select(info 

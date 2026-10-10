@@ -18,7 +18,9 @@ public static class StringExtensions
     
     public static string AddPrefixIfIsKeyword(this string name)
     {
-        if (!SyntaxFacts.IsValidIdentifier(name))
+        // IsValidIdentifier only checks the characters: 'event' and 'class' are valid for it
+        var isKeyword = SyntaxFacts.GetKeywordKind(name) != SyntaxKind.None;
+        if (isKeyword || !SyntaxFacts.IsValidIdentifier(name))
             name = KeywordPrefix + name;
 
         return name;

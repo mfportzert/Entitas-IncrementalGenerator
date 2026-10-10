@@ -64,7 +64,7 @@ public static class TestHelper
         return Verifier.Verify(combinedOutput).UseExtension("cs");
     }
 
-    static IEnumerable<MetadataReference> GetCompilationReferences()
+    internal static IEnumerable<MetadataReference> GetCompilationReferences()
     {
         // it's suboptimal and slow to add all possible references to the compilation...
         // but I've had headaches trying to find which reference was missing in the generator
