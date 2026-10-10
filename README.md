@@ -1,5 +1,7 @@
 This repository provides a new code generator for <a href="https://github.com/sschmid/Entitas">Entitas</a>, eliminating the need for <a href="https://github.com/sschmid/Jenny">Jenny</a>.
 
+This generator works with <b>Entitas 1.14.1</b> release.
+
 .NET's Incremental Generators perform code generation at compile time, adding source code to your project automatically. You don't need to trigger generations manually anymore.
 
 Support:
